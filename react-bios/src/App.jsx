@@ -2,6 +2,7 @@
 import React from "react";
 import "./App.css";
 import Courses from "./components/Courses";
+import MyButton from "./components/MyButton";
 
 function App() {
   const subTitle = "React & Node.js";
@@ -27,9 +28,7 @@ function App() {
       {/* Gebruiken van een andere component */}
       <Courses courses={courses} secondProp={2} />
 
-      <button id="btn" onClick={handleClick}>
-        Klik mij
-      </button>
+      <MyButton />
 
       <p className="text">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi fugiat
