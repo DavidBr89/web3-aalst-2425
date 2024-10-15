@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import Courses from "./components/Courses";
 import MyButton from "./components/MyButton";
+import Counter from "./components/Counter";
 
 function App() {
   const subTitle = "React & Node.js";
@@ -25,10 +26,17 @@ function App() {
 
       <p>{`${fName} ${lName}`}</p>
 
+      <Counter />
+
       {/* Gebruiken van een andere component */}
       <Courses courses={courses} secondProp={2} />
 
-      <MyButton />
+      {/* Eigen props meegeven als attribuut aan element */}
+      <MyButton onClick={handleClick}>
+        <div>
+          <p>BTN FROM DIV</p>
+        </div>
+      </MyButton>
 
       <p className="text">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi fugiat
