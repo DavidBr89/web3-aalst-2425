@@ -1,0 +1,17 @@
+export const GENRES = [
+  "All",
+  "Actie",
+  "Animatie",
+  "Avontuur",
+  "Documentaire",
+  "Drama",
+  "Familie",
+  "Fantasie",
+  "Horror",
+  "Komedie",
+  "Mysterie",
+  "Romantiek",
+  "Sciencefiction",
+  "Thriller",
+  "Western",
+];
