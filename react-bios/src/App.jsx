@@ -4,8 +4,11 @@ import "./App.css";
 import Courses from "./components/Courses";
 import MyButton from "./components/MyButton";
 import Counter from "./components/Counter";
+import { useDarkMode } from "./contexts/DarkModeContext";
 
 function App() {
+  const darkModeObj = useDarkMode();
+
   const subTitle = "React & Node.js";
   const { fName, lName } = {
     fName: "David",
@@ -20,7 +23,7 @@ function App() {
 
   // JSX returnen
   return (
-    <>
+    <div className={darkModeObj.isDarkMode ? "bg-slate-600" : "bg-white"}>
       <h1 className="text-2xl text-center text-red-600">Web 3</h1>
       <h3>{subTitle}</h3>
 
@@ -55,7 +58,7 @@ function App() {
         mollitia expedita a fuga iusto nam eum nobis recusandae quasi hic quidem
         nihil unde quas id. Consequuntur sunt modi eligendi eaque natus.
       </p>
-    </>
+    </div>
   );
 }
 

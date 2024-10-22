@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import MyButton from "./MyButton";
 
 import { Button, Checkbox, Slider, TextField } from "@mui/material";
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 const CounterButtons = (props) => {
   const { counter, setCounter } = props;
+
+  // Context gebruiken -> DarkModeContext
+  // const darkModeObj = useContext(DarkModeContext);
+  const darkModeObj = useDarkMode();
 
   useEffect(() => {
     console.log("CounterButtons component gerenderd");
@@ -27,6 +32,8 @@ const CounterButtons = (props) => {
   return (
     <div>
       {/* <MyButton onClick={decrement}>-</MyButton> */}
+
+      <p>Darkmode: {darkModeObj.isDarkMode ? "Aan" : "UIT"}</p>
 
       <Button
         variant="contained"
