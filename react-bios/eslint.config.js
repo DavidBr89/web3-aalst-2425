@@ -31,6 +31,7 @@ export default [
       "react/jsx-no-target-blank": "off",
       // Validatie van de props uitschakelen
       "react/prop-types": "off",
+      "no-unused-vars": "off",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
