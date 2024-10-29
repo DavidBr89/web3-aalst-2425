@@ -8,7 +8,17 @@ const DetailsPage = () => {
   const { id } = useParams();
   // Op dit punt heb je de id vanuit uw parameters
 
-  return <div>DetailsPage</div>;
+  const movie = movies.find((m) => m.id === Number.parseInt(id));
+
+  if (!movie) {
+    return <p>Geen film gevonden met deze id.</p>;
+  }
+
+  return (
+    <div>
+      <h1>{movie.title}</h1>
+    </div>
+  );
 };
 
 export default DetailsPage;

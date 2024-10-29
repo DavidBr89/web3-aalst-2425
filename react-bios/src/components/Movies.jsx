@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import movies from "../utils/films.json";
 import MovieItem from "./MovieItem";

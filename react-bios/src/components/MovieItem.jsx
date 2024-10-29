@@ -4,18 +4,30 @@ import React from "react";
 import aalstImg from "../assets/aalst.jpg";
 
 import { Link, useNavigate } from "react-router-dom";
+import { MdFavorite } from "react-icons/md";
 
-const MovieItem = ({ movie }) => {
+const MovieItem = ({ movie, setFavorites }) => {
   // Hook om te kunnen navigeren via event listeners
   const navigate = useNavigate();
 
   return (
     <div
-      className="shadow-lg rounded-2xl overflow-clip transition duration-500 hover:scale-105 cursor-pointer"
+      className="relative shadow-lg rounded-2xl overflow-clip transition duration-500 hover:scale-105 cursor-pointer"
       onClick={() => {
         // Navigeren naar de details pagina
-        navigate("/details");
+        navigate(`/details/${movie.id}`);
       }}>
+      <button
+        className="absolute top-4 right-4 text-white text-3xl rounded-full bg-emerald-600 p-2 "
+        onClick={(event) => {
+          console.log("Geklikt op favorieten");
+          setFavorites(movie);
+          // Het stoppen van de event bubbling - opgooien van de events
+          event.stopPropagation();
+        }}>
+        <MdFavorite />
+      </button>
+
       <img
         src={new URL(`../assets/${movie.poster_path}`, import.meta.url)}
         alt="Campus aalst"

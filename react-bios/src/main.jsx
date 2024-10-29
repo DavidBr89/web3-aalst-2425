@@ -10,11 +10,14 @@ import Footer from "./components/Footer.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/RootLayout.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
+import FavoritesPage from "./pages/FavoritesPage.jsx";
 
 // Stap 1: Het aanmaken van een nieuwe browserRouter
 const browserRouter = createBrowserRouter([
   {
     element: <RootLayout></RootLayout>,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
@@ -24,6 +27,10 @@ const browserRouter = createBrowserRouter([
         // Dynamisch id te kunnen gebruiken als parameter
         path: "details/:id",
         element: <DetailsPage />,
+      },
+      {
+        path: "favorites",
+        element: <FavoritesPage />,
       },
     ],
   },

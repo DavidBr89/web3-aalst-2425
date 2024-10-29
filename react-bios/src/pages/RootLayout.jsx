@@ -5,14 +5,14 @@ import { Outlet } from "react-router-dom";
 
 const RootLayout = () => {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <div>
+      <div className="flex-grow">
         {/* Dynamisch content aanpassen aan het opgegeven pad */}
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
