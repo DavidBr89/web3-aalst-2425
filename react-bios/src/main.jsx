@@ -7,13 +7,29 @@ import Movies from "./components/Movies.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./pages/RootLayout.jsx";
+
+// Stap 1: Het aanmaken van een nieuwe browserRouter
+const browserRouter = createBrowserRouter([
+  {
+    element: <RootLayout></RootLayout>,
+    children: [
+      {
+        path: "/",
+        element: <Movies />,
+      },
+      // {
+      //   path: "/details",
+      //   element:
+      // }
+    ],
+  },
+]);
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <DarkModeContextProvider>
-      {/* <App /> */}
-      <Header />
-      <Movies />
-      <Footer />
-    </DarkModeContextProvider>
+    <RouterProvider router={browserRouter} />
+    <DarkModeContextProvider />
   </StrictMode>
 );
