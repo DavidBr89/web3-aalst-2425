@@ -9,6 +9,7 @@ import Footer from "./components/Footer.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/RootLayout.jsx";
+import DetailsPage from "./pages/DetailsPage.jsx";
 
 // Stap 1: Het aanmaken van een nieuwe browserRouter
 const browserRouter = createBrowserRouter([
@@ -19,10 +20,11 @@ const browserRouter = createBrowserRouter([
         path: "/",
         element: <Movies />,
       },
-      // {
-      //   path: "/details",
-      //   element:
-      // }
+      {
+        // Dynamisch id te kunnen gebruiken als parameter
+        path: "details/:id",
+        element: <DetailsPage />,
+      },
     ],
   },
 ]);
