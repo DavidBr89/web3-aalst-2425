@@ -12,6 +12,7 @@ import RootLayout from "./pages/RootLayout.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import FavoritesPage from "./pages/FavoritesPage.jsx";
+import StarwarsPage from "./pages/StarwarsPage.jsx";
 
 // Stap 1: Het aanmaken van een nieuwe browserRouter
 const browserRouter = createBrowserRouter([
@@ -31,6 +32,10 @@ const browserRouter = createBrowserRouter([
       {
         path: "favorites",
         element: <FavoritesPage />,
+      },
+      {
+        path: "starwars",
+        element: <StarwarsPage />,
       },
     ],
   },
