@@ -13,7 +13,7 @@ const FavoritesContextProvider = (props) => {
 
     if (favorites.some((f) => f.id === movie.id)) {
       // Dat de film er al inzit
-      favorites.filter((f) => f.id !== movie.id);
+      setFavorites(favorites.filter((f) => f.id !== movie.id));
     } else {
       setFavorites([...favorites, movie]);
     }

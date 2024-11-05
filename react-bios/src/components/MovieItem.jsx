@@ -4,11 +4,16 @@ import React from "react";
 import aalstImg from "../assets/aalst.jpg";
 
 import { Link, useNavigate } from "react-router-dom";
-import { MdFavorite } from "react-icons/md";
+import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
+import { useFavorites } from "../contexts/FavoritesContext";
 
 const MovieItem = ({ movie }) => {
   // Hook om te kunnen navigeren via event listeners
   const navigate = useNavigate();
+
+  const { toggleFavorite, favorites } = useFavorites();
+
+  const isInFavorites = favorites.some((f) => f.id === movie.id);
 
   return (
     <div
@@ -18,12 +23,17 @@ const MovieItem = ({ movie }) => {
         navigate(`/details/${movie.id}`);
       }}>
       <button
-        className="absolute top-4 right-4 text-white text-3xl rounded-full bg-emerald-600 p-2 "
+        // TODO: Als hem al in de favorites inzit -> bg-red-700 ZONIET -> bg-emerald-600
+        className={`absolute top-4 right-4 text-white text-3xl rounded-full ${
+          isInFavorites ? "bg-red-600" : "bg-emerald-600"
+        } p-2`}
         onClick={(event) => {
+          toggleFavorite(movie);
+
           // Het stoppen van de event bubbling - opgooien van de events
           event.stopPropagation();
         }}>
-        <MdFavorite />
+        {isInFavorites ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
       </button>
 
       <img
