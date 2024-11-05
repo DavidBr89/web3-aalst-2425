@@ -13,6 +13,7 @@ import DetailsPage from "./pages/DetailsPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import FavoritesPage from "./pages/FavoritesPage.jsx";
 import StarwarsPage from "./pages/StarwarsPage.jsx";
+import FavoritesContextProvider from "./contexts/FavoritesContext.jsx";
 
 // Stap 1: Het aanmaken van een nieuwe browserRouter
 const browserRouter = createBrowserRouter([
@@ -43,7 +44,10 @@ const browserRouter = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={browserRouter} />
-    <DarkModeContextProvider />
+    <FavoritesContextProvider>
+      <DarkModeContextProvider>
+        <RouterProvider router={browserRouter} />
+      </DarkModeContextProvider>
+    </FavoritesContextProvider>
   </StrictMode>
 );

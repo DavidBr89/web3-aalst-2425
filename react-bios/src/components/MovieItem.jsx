@@ -6,7 +6,7 @@ import aalstImg from "../assets/aalst.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { MdFavorite } from "react-icons/md";
 
-const MovieItem = ({ movie, setFavorites }) => {
+const MovieItem = ({ movie }) => {
   // Hook om te kunnen navigeren via event listeners
   const navigate = useNavigate();
 
@@ -20,8 +20,6 @@ const MovieItem = ({ movie, setFavorites }) => {
       <button
         className="absolute top-4 right-4 text-white text-3xl rounded-full bg-emerald-600 p-2 "
         onClick={(event) => {
-          console.log("Geklikt op favorieten");
-          setFavorites(movie);
           // Het stoppen van de event bubbling - opgooien van de events
           event.stopPropagation();
         }}>
