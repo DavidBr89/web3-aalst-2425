@@ -7,7 +7,7 @@ import { fetchParkings } from "../api";
 const ParkingsPage = () => {
   const queryClient = useQueryClient();
 
-  queryClient.prefetchQuery(["fetchParkings"]);
+  // queryClient.prefetchQuery(["fetchParkings"]);
 
   const { data, isLoading, isError, error, dataUpdatedAt, refetch } = useQuery({
     // QueryKey -> altijd een array meegeven -> Samengestelde keys kan maken
@@ -19,7 +19,7 @@ const ParkingsPage = () => {
         results: [],
       },
     },
-    enabled: false,
+    // enabled: false,
   });
 
   if (isLoading) {

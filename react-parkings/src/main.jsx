@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ParkingsPage from "./pages/ParkingsPage.jsx";
 import AddParkingPage from "./pages/AddParkingPage.jsx";
+import MapPage from "./pages/MapPage.jsx";
 
 // STAP 1: Navigeren
 
@@ -19,6 +20,10 @@ const browserRouter = createBrowserRouter([
   {
     path: "/add",
     element: <AddParkingPage />,
+  },
+  {
+    path: "/map",
+    element: <MapPage />,
   },
 ]);
 

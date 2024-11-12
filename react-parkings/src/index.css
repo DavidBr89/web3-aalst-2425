@@ -1,3 +1,7 @@
+/* Zorgt voor de CSS van het leaflet package */
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
