@@ -1,5 +1,6 @@
 const prisma = require("../config/prisma");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const { validationResult } = require("express-validator");
 
@@ -61,7 +62,25 @@ const UsersController = {
         const result = await bcrypt.compare(password, hashedPassword);
 
         if (result) {
-          res.send("Match");
+          // Gebruiker is ingelogd -> wachtwoord stem overeen dus token aanmaken
+
+          const payload = {
+            sub: foundUser.id,
+            role: "STUDENT",
+            iat: Date.now(),
+          };
+          const jwtToken = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: "7d",
+          });
+
+          res.cookie("web3", jwtToken, {
+            httpOnly: true,
+            // HTTPS only cookie
+            secure: false,
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          });
+
+          res.json({ ...foundUser, password: undefined });
         } else {
           res.sendStatus(401);
         }
@@ -101,6 +120,22 @@ const UsersController = {
     } catch (error) {
       res.sendStatus(500);
     }
+  },
+  verify: async (req, res) => {
+    const { userId } = req;
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          id: +userId,
+        },
+      });
+      res.json(user);
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  },
+  logout: async (req, res) => {
+    res.clearCookie("web3").sendStatus(200);
   },
 };
 

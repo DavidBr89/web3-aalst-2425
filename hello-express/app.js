@@ -6,6 +6,10 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+// Helmet importeren -> Beveiligen van onze app met Helmet
+const helmet = require("helmet");
+const cors = require("cors");
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 // Importeren van mijn productsRouter
@@ -21,6 +25,16 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// Gebruik van helmet middleware
+app.use(helmet());
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://hogent.be"],
+    credentials: true,
+  })
+);
+
 // Deze lijn mag verwijderd worden
 // app.use(express.static(path.join(__dirname, "public")));
 

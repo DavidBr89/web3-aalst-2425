@@ -4,6 +4,7 @@ import TextInput from "../components/TextInput";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,6 +17,7 @@ const validationSchema = Yup.object().shape({
 
 const LoginPage = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const { touched, errors, values, handleChange, handleBlur, handleSubmit } =
     useFormik({
@@ -24,7 +26,7 @@ const LoginPage = () => {
         password: "",
       },
       onSubmit: ({ email, password }) => {
-        login(email, password);
+        login(email, password, navigate);
       },
       validationSchema: validationSchema,
     });

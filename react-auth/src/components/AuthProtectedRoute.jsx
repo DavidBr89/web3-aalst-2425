@@ -3,7 +3,13 @@ import { useAuth } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 
 const AuthProtectedRoute = (props) => {
-  // TODO: Implementatie
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  return user ? props.children : <Navigate to="/login" replace={true} />;
 };
 
 export default AuthProtectedRoute;
