@@ -62,7 +62,19 @@ const ProductController = {
       res.status(500).send(error);
     }
   },
-  remove: () => {},
+  remove: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      await prisma.product.delete({
+        where: {
+          id: +id,
+        },
+      });
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  },
 };
 
 module.exports = ProductController;

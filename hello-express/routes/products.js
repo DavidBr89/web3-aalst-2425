@@ -70,6 +70,8 @@ router.get("/:id", ProductController.getById);
 
 router.post("/", ProductController.create);
 
+router.delete("/:id", ProductController.remove);
+
 // /products/test
 router.get(
   "/test",
