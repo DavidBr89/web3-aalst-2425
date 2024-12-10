@@ -3,7 +3,6 @@ import TextInput from "../components/TextInput";
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { login } from "../api/auth";
 import { useAuth } from "../contexts/AuthContext";
 
 const validationSchema = Yup.object().shape({
